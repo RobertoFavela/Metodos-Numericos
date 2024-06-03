@@ -16,14 +16,10 @@ public class Biseccion {
         double vFinal = entrada.nextDouble();
         
         biseccionRecursiva(vInicial, vFinal, vError, 1);
-
     }
 
     public static void biseccionRecursiva(double Xizq, double Xder, double vError, int iteracion) {
-        double Fizq = f(Xizq);
-        double Fder = f(Xder);
-        double Xm = m(Xizq, Xder);
-        double fXm = f(Xm);
+        double Fizq = f(Xizq), Fder = f(Xder), Xm = m(Xizq, Xder), fXm = f(Xm);
 
         System.out.println(iteracion + ")");
         System.out.printf("Xizq= %6.6f     F(Xizq)= %6.6f\n", Xizq, Fizq);
@@ -32,10 +28,10 @@ public class Biseccion {
 
         iteracion += 1;
 
-        if (Math.abs(Xder - Xizq) < vError) {
-            System.out.println("Root approximation: " + Xm);
+        if (Math.abs(Xder - Xizq) / 2 < vError) {
+            System.out.println("Raiz aproximada: " + Xm);
         } else {
-            if (fXm > 0) {
+            if (Fizq * fXm < 0) {
                 biseccionRecursiva(Xizq, Xm, vError, iteracion);
             } else {
                 biseccionRecursiva(Xm, Xder, vError, iteracion);
@@ -49,9 +45,9 @@ public class Biseccion {
         return Math.sin(x) - Math.pow(x, 2);
     }
 
-
     //metodo para ahorrarme sacar la Xm cada iteracion
     public static double m(double Xizq, double Xder) {
         return (Xizq + Xder) / 2;
     }
 }
+
