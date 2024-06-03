@@ -19,21 +19,21 @@ public class ReglaFalsa {
     }
 
     public static void ReglaFalsaRecursiva(double Xizq, double Xder, double vError, int iteracion) {
-        double Fizq = f(Xizq);
-        double Fder = f(Xder);
-        double Xm = m(Xizq, Xder, Fizq, Fder);
-        double fXm = f(Xm);
+        double Fizq = f(Xizq), Fder = f(Xder), Xm = m(Xizq, Xder, Fizq, Fder), fXm = f(Xm);
 
         System.out.println(iteracion + ")");
         System.out.printf("Xizq= %6.6f     F(Xizq)= %6.6f\n", Xizq, Fizq);
         System.out.printf("Xder= %6.6f     F(Xder)= %6.6f\n", Xder, Fder);
         System.out.printf("  Xm= %6.6f       F(Xm)= %6.6f\n", Xm, fXm);
 
-        if (Math.abs(Xder - Xizq) < vError) {
-            System.out.println("Raiz aproximada: " + Xm);
+        iteracion += 1;
+
+        if (Math.abs(fXm) < vError) {
+            System.out.println("----------------------------------------\n" +
+                  "    Raiz aproximada: " + Xm + "\n" +
+                  "----------------------------------------");
         } else {
-            iteracion += 1;
-            if (Fizq * fXm < 0) {
+            if (fXm > 0) {
                 ReglaFalsaRecursiva(Xizq, Xm, vError, iteracion);
             } else {
                 ReglaFalsaRecursiva(Xm, Xder, vError, iteracion);

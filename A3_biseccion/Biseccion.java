@@ -28,15 +28,15 @@ public class Biseccion {
 
         iteracion += 1;
 
-        if (Math.abs(Xder - Xizq) / 2 < vError) {
+        if (Math.abs(fXm) < vError) {
             System.out.println("----------------------------------------\n" +
                   "    Raiz aproximada: " + Xm + "\n" +
                   "----------------------------------------");
         } else {
-            if (Fizq * fXm < 0) {
-                biseccionRecursiva(Xizq, Xm, vError, iteracion);
-            } else {
+            if (fXm > 0) {
                 biseccionRecursiva(Xm, Xder, vError, iteracion);
+            } else {
+                biseccionRecursiva(Xizq, Xm, vError, iteracion);
             }
         }
     }
