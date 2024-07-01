@@ -34,21 +34,32 @@ public class GaussSeidel {
         
         Scanner entrada = new Scanner(System.in);
         
-        for (int i = 0; i < 3; i++) {
-            System.out.println("-----------------");
-            System.out.println((i + 1) + "ra Ecuacion");
-            System.out.println("-----------------");
-            System.out.print("X1: ");
-            sistema[i][0] = entrada.nextDouble();
-            System.out.print("X2: ");
-            sistema[i][1] = entrada.nextDouble();
-            System.out.print("X3: ");
-            sistema[i][2] = entrada.nextDouble();
-            System.out.print("Rs: ");
-            sistema[i][3] = entrada.nextDouble();
+        System.out.print("Ingrese el numero de ecuaciones a usar: ");
+        int numEcuaciones = entrada.nextInt();
+        
+        if (numEcuaciones > 10) {
+            System.out.println("No puedes usar mas de 10 ecuaciones");
+            return null;
+        } else {
+            double[][] sistema = new double[numEcuaciones][4];
+
+            for (int i = 0; i < numEcuaciones; i++) {
+                System.out.println("-----------------");
+                System.out.println((i + 1) + "ra Ecuacion");
+                System.out.println("-----------------");
+                System.out.print("X1: ");
+                sistema[i][0] = entrada.nextDouble();
+                System.out.print("X2: ");
+                sistema[i][1] = entrada.nextDouble();
+                System.out.print("X3: ");
+                sistema[i][2] = entrada.nextDouble();
+                System.out.print("Rs: ");
+                sistema[i][3] = entrada.nextDouble();
+            }
+
+            return sistema;
         }
 
-        return sistema;
     }
 
     public static void despliegaSolucion(double[][] sistema) {
