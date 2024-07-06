@@ -24,7 +24,7 @@ public class ReglaDelRectangulo {
         double[] alturas = new double[segmentos];
         double[] areas = new double[segmentos];
 
-        double base = (limiteSuperior - limiteSuperior) / segmentos;
+        double base = (limiteSuperior - limiteInferior) / segmentos;
 
         for (int i = 1; i < segmentos+1; i++) {
             puntos[i-1] = (base * i);
@@ -56,7 +56,7 @@ public class ReglaDelRectangulo {
     }
 
     public static void desplegarSolucion(double[] areas) {
-        int areaTotal = 0;
+        double areaTotal = 0;
         System.out.println("----------------------------");
         System.out.println("   Area de los segmentos ");
         for(int i = 0; i < areas.length; i++) {
